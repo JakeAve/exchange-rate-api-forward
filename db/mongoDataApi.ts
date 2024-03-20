@@ -15,8 +15,10 @@ interface Options {
   filter?: Record<string, string | number>;
   sort?: Record<string, string | number>;
   limit?: number;
-  documents?: Record<string | number, string | number>[];
-  document?: Record<string | number, string | number>;
+  // deno-lint-ignore no-explicit-any
+  documents?: any[];
+  // deno-lint-ignore no-explicit-any
+  document?: any
 }
 
 type operations =
@@ -49,5 +51,5 @@ export function findOne(options: Options) {
 }
 
 export function insertOne(options: Options) {
-  return runAction("insertOne", options);
+    return runAction("insertOne", options);
 }
