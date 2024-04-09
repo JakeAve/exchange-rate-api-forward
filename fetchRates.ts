@@ -18,7 +18,7 @@ interface ExchangeRateApiResponse {
   };
 }
 
-export async function readRates() {
+export async function fetchRates() {
   const eurRes = await fetch(`${EXCHANGE_RATE_API}/latest/EUR`);
   const eurObj = (await eurRes.json()) as ExchangeRateApiResponse;
 

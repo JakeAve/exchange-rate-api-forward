@@ -1,6 +1,6 @@
 import { assertEquals, assert } from "$std/assert/mod.ts";
 import { stub } from "$std/testing/mock.ts";
-import { readRates } from "./readRates.ts";
+import { fetchRates } from "./fetchRates.ts";
 
 const MOCK_API_RESPONSE = {
   result: "success",
@@ -28,7 +28,7 @@ Deno.test("readRates() function returns the correct structure", async () => {
     }
   );
 
-  const data = await readRates();
+  const data = await fetchRates();
 
   assert(Object.hasOwn(data, "currencies"));
   assert(data.currencies.includes("EUR"));
