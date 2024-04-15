@@ -1,8 +1,8 @@
-import { readRates } from "./readRates.ts";
+import { fetchRates } from "./fetchRates.ts";
 import { insertOne } from "./db/mongoDataApi.ts";
 
 export async function scrape() {
-  const { currencies, conversions, date } = await readRates();
+  const { currencies, conversions, date } = await fetchRates();
 
   const proms = await Promise.allSettled([
     insertOne({
