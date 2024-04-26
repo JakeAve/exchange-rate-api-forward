@@ -1,7 +1,6 @@
 import {
   assertEquals,
   assert,
-  assertStrictEquals,
   assertObjectMatch,
 } from "$std/assert/mod.ts";
 import { stub } from "$std/testing/mock.ts";
