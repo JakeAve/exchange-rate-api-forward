@@ -1,4 +1,9 @@
-import { assertEquals, assert } from "$std/assert/mod.ts";
+import {
+  assertEquals,
+  assert,
+  assertStrictEquals,
+  assertObjectMatch,
+} from "$std/assert/mod.ts";
 import { stub } from "$std/testing/mock.ts";
 import { fetchRates } from "./fetchRates.ts";
 
@@ -31,10 +36,14 @@ Deno.test("readRates() function returns the correct structure", async () => {
   const data = await fetchRates();
 
   assert(Object.hasOwn(data, "currencies"));
-  assert(data.currencies.includes("EUR"));
+  assertEquals(data.currencies, ["USD", "EUR", "CAD"]);
 
   assert(Object.hasOwn(data, "conversions"));
-  assertEquals(typeof data.conversions["EUR:USD"], "number");
+  assertObjectMatch(data.conversions, {
+    "EUR:USD": 1.2,
+    "EUR:EUR": 1,
+    "EUR:CAD": 1.01,
+  });
 
   assert(Object.hasOwn(data, "date"));
   assert(data.date instanceof Date);
