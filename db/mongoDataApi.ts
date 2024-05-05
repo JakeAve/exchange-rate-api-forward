@@ -18,7 +18,7 @@ interface Options {
   // deno-lint-ignore no-explicit-any
   documents?: any[];
   // deno-lint-ignore no-explicit-any
-  document?: any
+  document?: any;
 }
 
 type operations =
@@ -51,5 +51,5 @@ export function findOne(options: Options) {
 }
 
 export function insertOne(options: Options) {
-    return runAction("insertOne", options);
+  return runAction("insertOne", options);
 }

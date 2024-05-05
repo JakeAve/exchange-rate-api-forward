@@ -1,4 +1,4 @@
-import { assertEquals, assert } from "$std/assert/mod.ts";
+import { assert, assertEquals } from "$std/assert/mod.ts";
 import { stub } from "$std/testing/mock.ts";
 import { findOne, insertOne } from "./mongoDataApi.ts";
 
@@ -12,7 +12,7 @@ Deno.test("findOne() function retrieves the correct document", async () => {
       };
       const response = new Response(JSON.stringify(mockResponse));
       return Promise.resolve(response);
-    }
+    },
   );
 
   const result = await findOne({
@@ -37,7 +37,7 @@ Deno.test("insertOne() function successfully inserts a document", async () => {
       };
       const response = new Response(JSON.stringify(mockResponse));
       return Promise.resolve(response);
-    }
+    },
   );
 
   const result = await insertOne({
